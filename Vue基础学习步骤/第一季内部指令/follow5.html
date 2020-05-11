@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <title>跟5-on</title>
+</head>
+
+<body>
+    <div id="app">
+        得分：{{count}}<br>
+        <button @click="add">加分</button>
+        <button @click='subtract'>减分</button><br>
+        <input type="number" @keyup.enter="onEnter" v-model='secondCount'>{{secondCount}}
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                count: 1,
+                secondCount: ''
+            },
+            methods: {
+                add: function() {
+                    return this.count++
+                },
+                subtract: function() {
+                    if (this.count == 0) return
+                    return this.count--
+                },
+                onEnter: function() {
+                    return this.count = parseFloat(this.secondCount) + 10
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

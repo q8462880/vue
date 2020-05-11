@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <title>Helloworld</title>
+</head>
+<body>
+<div id="app">
+    <hr>
+    <component01 where="我是全局局部注册"></component01>
+    <hr>
+    <qian-tao-02 qiao-tao02-params="我是全局嵌套"></qian-tao-02>
+    <hr>
+    <qian-tao father-where="我是局部嵌套"></qian-tao>
+    <hr>
+</div>
+
+<script type="text/javascript">
+
+    var component01 = {
+        template: '<div>Panda from {{where}}!</div>',
+        props: ['where']
+    }
+
+    var qianTao02 = {
+        template: `<div>{{qiaoTao02Params}}
+                    <component01 where="meiguo"></component01>
+                    </div>`,
+        props: ['qiaoTao02Params'],
+        components: {
+            'component01': component01
+        }
+    }
+
+    var app = new Vue({
+        el: "#app",
+        data: {
+            message: 'hello world'
+        },
+        components: {
+            "component01": component01,
+            "qian-tao-02": qianTao02,
+            "qian-tao": {
+                template: `<div> + {{fatherWhere}} div
+                            <component01 where="yingguo">
+                             </component01></div>`,
+                components: {
+                    "component01": component01
+                },
+                props: ['fatherWhere']
+            }
+        }
+    })
+</script>
+
+</body>
+</html>
