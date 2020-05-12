@@ -17,6 +17,8 @@
     <author :value0="message"></author>
 
     <div id="needAuthorExtend" value0="message"></div>
+
+    <author></author>
 </div>
 
 <script type="text/javascript">
@@ -35,6 +37,10 @@
             }
         }
     });
+    var authorNewExtend = Vue.extend({
+        template:`<div><label :style="{color:'white'}">{{value0}}</lable></div>`,
+        props:['value0'],
+    })
     var app = new Vue({
         el: "#app",
         data: {
@@ -45,6 +51,7 @@
     let newAuthor = new authorExtend({propsData: {value0: app.message}}).$mount('author');
     let newAuthor2 = new authorExtend({propsData: {value0: app.message2}}).$mount('author');
     let newNeedAuthorExtend = new authorExtend({propsData: {value0: "我是传参"}}).$mount('#needAuthorExtend');
+    let newAuthorTest = new authorNewExtend({propsData:{value0:app.message}}).$mount('author');
     console.log(newAuthor);
     console.log(newNeedAuthorExtend);
 </script>
