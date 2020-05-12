@@ -8,7 +8,7 @@
 ## Vue 全家桶
 
 <div>
-<img src="./githubimages/Snip20180306_6.png" width="25%">|
+<img src="/githubimages/Snip20180306_6.png" width="25%">|
 <img src="./githubimages/Snip20180306_13.png" width="25%">|
 <img src="./githubimages/Snip20180306_7.png" width="25%">|
 <img src="./githubimages/Snip20180306_8.png" width="24%">|
