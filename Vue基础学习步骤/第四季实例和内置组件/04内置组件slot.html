@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <title>Helloworld</title>
+</head>
+<body>
+<!--<h1>Hello World</h1>-->
+<hr>
+<div id="app">
+    {{message}}
+    <student>
+        <span slot="userScore">{{student.score}}</span>
+        <label slot="nickName">{{student.name}}
+            <img src="https://raw.githubusercontent.com/NJHu/vue/master/githubimages/jicchumulu.jpg" width="100px"/>
+        </label>
+        <span slot="userAge">{{student.age}}</span>
+    </student>
+
+    <student>
+        <!--<label slot="nickName"></label>-->
+        <!--<label slot="userScore"></label>-->
+        <!--<label slot="userAge"></label>-->
+    </student>
+</div>
+
+
+<template id="tmp">
+    <div>
+        <p>name:
+            <slot name="nickName">
+                <label>DefaultName</label>
+            </slot>
+        </p>
+        <p>age:
+            <slot name="userAge">
+                <label>DefaultAge</label>
+            </slot>
+        </p>
+        <p>score:
+            <slot name="userScore">
+                <label>DefaultScore</label>
+            </slot>
+        </p>
+    </div>
+</template>
+
+<script type="text/javascript">
+
+//    let cmp = {
+//        template: '#tmp'
+//    }
+    var app = new Vue({
+        el: "#app",
+        data() {
+            return {
+                message: 'hello world',
+                student: {
+                    name: "jim",
+                    age: 19,
+                    score: 99
+                }
+            }
+        },
+        components: {
+            "student": {
+                template: '#tmp'
+            }
+        }
+    })
+</script>
+
+</body>
+</html>
