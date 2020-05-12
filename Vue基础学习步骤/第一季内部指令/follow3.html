@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>跟3-for</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="item in items">{{item}}</li>
+        </ul>
+        <ul>
+            <li v-for="item in sortItems">{{item}}</li>
+        </ul>
+        <ul>
+            <li v-for="(student,index) in sortStudent">{{index}}：{{student.name}} {{student.age}}</li>
+        </ul>
+    </div>
+    <script>
+        function sortKey(arr, key) {
+            return arr.sort(function(a, b) {
+                var x = a[key],
+                    y = b[key]
+                return x - y
+            })
+        }
+        var app = new Vue({
+            el: '#app',
+            data: {
+                items: [6, 1, 2, 3, 4, 5],
+                students: [{
+                    name: '',
+                    age: 123
+                }, {
+                    name: '',
+                    age: 456
+                }, {
+                    name: '',
+                    age: 12
+                }, {
+                    name: '',
+                    age: 415456
+                }, {
+                    name: '',
+                    age: 4546
+                }, {
+                    name: '',
+                    age: 46
+                }]
+            },
+            computed: {
+                sortItems: function() {
+                    return this.items.sort(function(a, b) {
+                        return a - b
+                    })
+                },
+                sortStudent: function() {
+                    return sortKey(this.students, 'age')
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

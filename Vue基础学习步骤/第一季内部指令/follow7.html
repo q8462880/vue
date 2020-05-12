@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <title>跟7-bind</title>
+    <style>
+        .classA {
+            color: red;
+        }
+        
+        .classB {
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- v-bind:src 缩写等于 :src -->
+        <img :src="imgSrc" width="50px"><br>
+        <a :href='goBaidu'>去往百度</a>
+        <p :class='className' @click='changeClass'>点击切换颜色</p>
+        <p :class='{classA:!isOk}'>绑定class中判断</p>
+        <p :class='[cssB,cssA]'>绑定class中的数组</p>
+        <p :class="!isOk?cssA:cssB">绑定class中的三元表达式判断</p>
+        <p :style='{color:"blue",fontSize:font}'>绑定style</p>
+        <p :style='styleObj'>用对象绑定style样式</p>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                imgSrc: 'person.jpg',
+                goBaidu: 'https://www.baidu.com',
+                className: 'classA',
+                isOk: false,
+                cssA: 'classA',
+                cssB: 'classB',
+                font: '12px',
+                styleObj: {
+                    borderRadius: '10px',
+                    background: 'green',
+                    color: '#fff'
+                }
+            },
+            methods: {
+                changeClass: function() {
+                    this.className = this.className == 'classA' ? 'classB' : 'classA'
+                    this.isOk = !this.isOk
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
